@@ -1,40 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// let name = 'Popflux'
-// let obj = {
-// 	fname: 'Muhammad',
-// 	lname: 'Thariq'
-// }
-// const element = <h1>Welcome to {name}</h1>
+class Clock extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			date : new Date()
+		}
+	}
 
-// function cartoon(name='Nobita', show='Doraemon') {
-// 	return <div className='someclass'>
-// 						<h1>cartoon name is {name} and its show is {show}</h1>
-// 						<h2>Hello World</h2>
-// 					</div>
-// }
+	componentDidMount(){
+		this.timer = setInterval(() => this.start(), 1000);
+	}
 
-// // cara pertama membuat component
-// function Cartoon(props){
-// 	return <h1>Hello, {props.name}</h1>
-// }
+	componentWillUnmount(){
+		clearInterval(this.timer);
+	}
 
-// cara kedua membuat component
-class Cartoon extends React.Component{
+	start(){
+		this.setState({
+			date: new Date()
+		});
+	}
+
 	render(){
-		return <h1>Hello, {this.props.name} on {this.props.show}</h1>
+		return <h1>Time is: {this.state.date.toLocaleTimeString()}</h1>
 	}
 }
 
-function Show(){
-	return	<div>
-						<Cartoon name='Pikachu' show='Pokemon' />
-						<Cartoon name='Aladin' show='Jasmine' />
-					</div>
-}
-
 ReactDOM.render (
-	<Show />,
+	<Clock />,
 	document.getElementById('root')
 );
