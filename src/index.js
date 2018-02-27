@@ -15,11 +15,26 @@ import ReactDOM from 'react-dom'
 // 					</div>
 // }
 
-setInterval(function(){
-	ReactDOM.render (
-		// <h1>{obj.fname} {obj.lname}</h1>,
-		// cartoon('Jasmine', 'Aladin'),
-		<h2>Time now: {new Date().toLocaleTimeString()}</h2>,
-		document.getElementById('root')
-	);
-},1000);
+// // cara pertama membuat component
+// function Cartoon(props){
+// 	return <h1>Hello, {props.name}</h1>
+// }
+
+// cara kedua membuat component
+class Cartoon extends React.Component{
+	render(){
+		return <h1>Hello, {this.props.name} on {this.props.show}</h1>
+	}
+}
+
+function Show(){
+	return	<div>
+						<Cartoon name='Pikachu' show='Pokemon' />
+						<Cartoon name='Aladin' show='Jasmine' />
+					</div>
+}
+
+ReactDOM.render (
+	<Show />,
+	document.getElementById('root')
+);
