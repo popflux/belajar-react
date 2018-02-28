@@ -1,18 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function ColorList(props){
-	const list = props.color
-	// const clrs = list.map((value, index)=> <li key={index}>{value}</li>)
-	return <ul>{
-						list.map((value, index)=> <li key={index}>{value}</li>)
-					}</ul>
+class Formtest extends React.Component{
+	constructor(props){
+		super(props)
+		this.state = {value: false}
+	}
+
+	handleSubmit = (e) => {
+		console.log(this.state.value)
+		e.preventDefault()
+	}
+
+	handleChange = (e) => {
+		this.setState({
+			value: !this.state.value
+		})
+	}
+
+	render(){
+		return(
+			<form onSubmit={this.handleSubmit}>
+				<label>Checkbox</label>
+				<input type='checkbox' value={this.state.value} onChange={this.handleChange} />
+				<input type='submit' value='Go Ahead' />
+			</form>
+		)
+	}
 }
 
-const colors = ['Red', 'Blue', 'Green', 'Blue']
-
 ReactDOM.render(
-	<ColorList color={colors} />,
+	<Formtest />,
 	document.getElementById('root')
 );
-
