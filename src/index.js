@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class Formtest extends React.Component{
 	constructor(props){
 		super(props)
-		this.state = {value: false}
+		this.state = {value: ''}
 	}
 
 	handleSubmit = (e) => {
@@ -14,15 +14,14 @@ class Formtest extends React.Component{
 
 	handleChange = (e) => {
 		this.setState({
-			value: !this.state.value
+			value: e.target.value
 		})
 	}
 
 	render(){
 		return(
 			<form onSubmit={this.handleSubmit}>
-				<label>Checkbox</label>
-				<input type='checkbox' value={this.state.value} onChange={this.handleChange} />
+				<input type='text' value={this.state.value} onChange={this.handleChange} />
 				<input type='submit' value='Go Ahead' />
 			</form>
 		)
