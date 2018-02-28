@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class Formtest extends React.Component{
 	constructor(props){
 		super(props)
-		this.state = {value: ''}
+		this.state = {value: 'red'}
 	}
 
 	handleSubmit = (e) => {
@@ -21,7 +21,10 @@ class Formtest extends React.Component{
 	render(){
 		return(
 			<form onSubmit={this.handleSubmit}>
-				<input type='text' value={this.state.value} onChange={this.handleChange} />
+				<select value={this.state.value} onChange={this.handleChange}>
+					<option value='red'>Red</option>
+					<option value='blue'>Blue</option>
+				</select>
 				<input type='submit' value='Go Ahead' />
 			</form>
 		)
